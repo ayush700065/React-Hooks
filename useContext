@@ -1,0 +1,15 @@
+import React,{createContext,useContext} from 'react';
+const myContext = createContext();
+function App(){
+  const contextValue = "hello jii,kaise hain aap";
+  return(
+    <myContext.Provider value={contextValue}>
+      <Child/>
+    </myContext.Provider>
+  );
+}
+const Child = () =>{
+  const contextValue = useContext(myContext);
+  return <p>{contextValue}</p>
+};
+export default App;
