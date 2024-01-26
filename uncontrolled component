@@ -1,0 +1,20 @@
+import React,{useRef} from 'react';
+
+const App = ()=>{
+  const inputRef = useRef(null);
+  const handleInput =() =>{
+    const value = inputRef.current.value;
+    alert(`you typed:${value}`);
+  };
+  
+  return (
+    <div>
+      <input type="text" ref={inputRef} placeholder="type"
+      />
+      <button onClick={handleInput}>Click</button>
+    </div>
+    
+  );
+}
+
+export default App;
