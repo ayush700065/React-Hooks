@@ -1,0 +1,30 @@
+import React from "react";
+import Child from "./Child";
+const App = ()=>{
+  const callback = (data) => {
+    console.log("Data passing from Child:",data);
+  };
+  return(
+    <div>
+      <Child fromChild={callback}/>
+    </div>
+  );
+}
+export default App;
+import React from 'react';
+import App from './App';
+const Child = ({fromChild}) => {
+  const datatopass = ()=> {
+    fromChild(document.getElementById
+      ("inputField").value);
+  };
+
+  return (
+    <div>
+      <input type="text"id="inputField"/>
+      <button onClick={datatopass}>Send</button>
+    </div>
+  );
+}
+
+export default Child;
