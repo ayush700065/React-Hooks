@@ -1,0 +1,58 @@
+import {Profiler} from 'react';
+  import Child from './Child';
+const callback = (
+  id,
+  phase,
+  actualDuration,
+  startTime,
+  baseDuration,
+  commitTime,
+  interactions
+) =>{
+  console.log(
+    "id"+
+    id +
+    "startTime"+
+    startTime+
+    "actualDuration"+
+    actualDuration+
+    "baseDuration"+
+    baseDuration+
+    "commitTime"+
+    commitTime+
+    "phase"+
+    phase+
+    "interactions"+
+    interactions
+  );
+};
+function App() {
+  return (
+    <div>
+      <Profiler id="Name" onRender={callback}>
+         <Child labelname="Name"/>
+      </Profiler>
+    </div>
+  );
+}
+
+export default App;
+import React, {useState} from 'react';
+const Child = (props) => {
+  const {labelname,...rest} = props;
+  const[text,setText] = useState();
+
+  return (
+    <div>
+      <label {...rest}>
+        {labelname}:
+        <input type="text"
+        value={text}
+        onChange={(e)=>
+        setText(e.target.value)}/>
+      </label>
+    </div>
+  );
+}
+
+export default Child;
