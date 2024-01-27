@@ -1,0 +1,34 @@
+import React, { lazy, Suspense } from 'react';
+import MyErrorBoundary from './MyErrorBoundary';
+
+const Child = lazy(() => import('./Child'));
+
+function App() {
+  return (
+    <div>
+      <MyErrorBoundary>
+        <Suspense fallback={<div>Load if...</div>}>
+          <Child />
+        </Suspense>
+      </MyErrorBoundary>
+    </div>
+  );
+}
+
+export default App;import React from 'react';
+import MyErrorBoundary from './MyErrorBoundary';
+
+function Child() {
+  return (
+    <p>hey its all fine.</p>
+  // Math.random()>0.5 ? (<p>Hey, hope you're doing well</p>):(<p>there is an error</p>)
+  );
+}
+
+export default Child;import React from 'react';
+
+function MyErrorBoundary() {
+  return <p>Hey, there is an error in the code</p>;
+};
+
+export default MyErrorBoundary;
